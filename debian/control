@@ -1,0 +1,25 @@
+Package: voxtral-agentic-voice-platform
+Version: 1.0.0
+Section: sound
+Priority: optional
+Architecture: amd64
+Depends: python3 (>= 3.10), python3-pip, python3-venv, python3-dev, ffmpeg, xdg-utils, portaudio19-dev, libsndfile1-dev, libasound2-dev, pulseaudio, pulseaudio-utils, libayatana-appindicator3-1, gir1.2-ayatanaappindicator3-0.1, python3-gi, python3-gi-cairo, libgirepository1.0-dev, libcairo2-dev, pkg-config, ydotool, wtype, wl-clipboard
+Recommends: nvidia-driver-libs (>= 470)
+Suggests: xdotool, xclip
+Maintainer: Voxtral Contributors <contributors@voxtral.dev>
+Description: AI-powered voice assistant for Linux
+ Voxtral Agentic Voice Platform is a comprehensive, Linux-native 
+ voice-controlled AI agent platform that provides real-time voice 
+ transcription, intelligent agent workflows, and cursor-aware typing.
+ .
+ Key features:
+  * Real-time voice transcription using local AI models
+  * Intelligent agent workflows with LangGraph orchestration
+  * Cursor-aware typing - types directly where your cursor is positioned
+  * Safe tool execution - shell commands, web search, file operations
+  * System tray interface - minimal, always-accessible control
+  * Linux-optimized - Wayland/X11 support, audio system integration
+  * Privacy-first - everything runs locally, no cloud dependencies
+ .
+ This package includes automatic startup configuration and desktop integration.
+Homepage: https://github.com/voicecontroll/voxtral-agentic-voice-platform

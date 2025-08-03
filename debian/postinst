@@ -1,0 +1,75 @@
+#!/bin/bash
+set -e
+
+echo "🧠 Voxtral Agentic Voice Platform - Post-Installation Setup"
+echo "=========================================================="
+
+# Add user to audio and input groups
+if ! groups $SUDO_USER | grep -q audio; then
+    usermod -a -G audio $SUDO_USER
+    echo "✅ Added user to audio group"
+fi
+
+if ! groups $SUDO_USER | grep -q input; then
+    usermod -a -G input $SUDO_USER
+    echo "✅ Added user to input group"
+fi
+
+# Configure PulseAudio for low latency
+USER_HOME=$(eval echo ~$SUDO_USER)
+PULSE_CONFIG="$USER_HOME/.config/pulse/daemon.conf"
+
+if [ ! -f "$PULSE_CONFIG" ]; then
+    mkdir -p "$(dirname "$PULSE_CONFIG")"
+    cat > "$PULSE_CONFIG" << EOF
+# Voxtral optimized PulseAudio configuration
+default-sample-format = s16le
+default-sample-rate = 16000
+alternate-sample-rate = 48000
+default-sample-channels = 1
+default-fragments = 2
+default-fragment-size-msec = 25
+EOF
+    chown $SUDO_USER:$SUDO_USER "$PULSE_CONFIG"
+    echo "✅ PulseAudio configuration created"
+fi
+
+# Setup ydotool service for Wayland typing support
+if systemctl list-unit-files | grep -q ydotool; then
+    systemctl enable ydotool.service
+    systemctl start ydotool.service
+    echo "✅ ydotool service enabled"
+else
+    # Create ydotool service if it doesn't exist
+    cat > /etc/systemd/system/ydotool.service << EOF
+[Unit]
+Description=ydotool daemon
+After=display-manager.service
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/ydotoold
+User=root
+Group=input
+
+[Install]
+WantedBy=multi-user.target
+EOF
+    
+    systemctl daemon-reload
+    systemctl enable ydotool.service
+    systemctl start ydotool.service
+    echo "✅ ydotool service created and enabled"
+fi
+
+echo "🎉 Installation completed successfully!"
+echo
+echo "📋 Next steps:"
+echo "1. Log out and back in for group changes to take effect"
+echo "2. Run: voxtral-setup-autostart to enable auto-startup"
+echo "3. Launch with: voxtral-tray"
+echo
+echo "🎙️ Happy voice commanding!"
+
+exit 0

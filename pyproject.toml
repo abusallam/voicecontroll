@@ -1,0 +1,135 @@
+[project]
+name = "voxtral-agentic-voice-platform"
+version = "1.0.0"
+description = "A comprehensive, Linux-native voice-controlled AI agent platform"
+authors = [
+    {name = "Voxtral Contributors", email = "contributors@voxtral.dev"}
+]
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+keywords = ["voice", "ai", "agent", "linux", "wayland", "speech", "transcription"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Desktop Environment",
+]
+
+dependencies = [
+    # Core AI/ML Dependencies
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+    "numpy>=1.25.2,<2.6.0",
+    
+    # Voice Processing & Audio
+    "faster-whisper>=0.5.0",
+    "openai-whisper>=20231117",
+    "sounddevice>=0.4.7",
+    "pyaudio>=0.2.11",
+    "webrtcvad>=2.0.10",
+    "soundfile>=0.12.0",
+    
+    # LangGraph and Agent Framework
+    "langgraph>=0.2.0",
+    "langchain>=0.1.0",
+    "langchain-community>=0.0.20",
+    
+    # UI and System Integration
+    "PyQt5>=5.15.8",
+    "psutil>=5.9.0",
+    
+    # Utilities
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0",
+    "requests>=2.31.0",
+    "ddgs>=6.0.0",
+    "aiohttp>=3.8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+]
+
+gpu = [
+    "vllm[audio]>=0.10.0",
+    "mistral-common[audio]>=0.10.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/voicecontroll/voxtral-agentic-voice-platform"
+Repository = "https://github.com/voicecontroll/voxtral-agentic-voice-platform"
+Documentation = "https://github.com/voicecontroll/voxtral-agentic-voice-platform/blob/main/README.md"
+"Bug Tracker" = "https://github.com/voicecontroll/voxtral-agentic-voice-platform/issues"
+
+[project.scripts]
+voxtral = "scripts.start_voxtral:main"
+voxtral-tray = "scripts.voxtral_tray_gtk:main"
+voxtral-test = "scripts.test_system:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agent", "config", "langraph", "models", "scripts", "tools"]
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = [
+    "sounddevice.*",
+    "webrtcvad.*",
+    "PyQt5.*",
+    "gi.*",
+    "vllm.*",
+    "faster_whisper.*",
+]
+ignore_missing_imports = true

@@ -1,0 +1,39 @@
+# Core AI/ML Dependencies - Voxtral Platform v1.0.0
+vllm[audio]>=0.10.0
+mistral-common[audio]>=0.10.0
+torch>=2.0.0
+transformers>=4.30.0
+numpy>=1.25.2,<2.6.0
+
+# Voice Processing & Audio
+faster-whisper>=0.5.0
+openai-whisper>=20231117
+sounddevice>=0.4.7
+pyaudio>=0.2.11
+webrtcvad>=2.0.10
+
+# LangGraph and Agent Framework
+langgraph>=0.2.0
+langchain>=0.1.0
+langchain-community>=0.0.20
+
+# UI and System Integration
+PyQt5>=5.15.8
+psutil>=5.9.0
+PyGObject>=3.42.0
+pycairo>=1.20.0
+
+# Linux Wayland Integration
+# Note: wtype and wl-clipboard should be installed via apt
+
+# Utilities
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+pyyaml>=6.0
+requests>=2.31.0
+ddgs>=6.0.0
+
+# Development and Testing
+pytest>=7.0.0
+black>=23.0.0
+flake8>=6.0.0

@@ -1,0 +1,53 @@
+# Voxtral Agentic Voice Platform Configuration v1.0.0
+
+vllm_endpoint: "http://localhost:8000/v1"
+model_name: "mistralai/Voxtral-Mini-3B-2507"
+
+voice:
+  sample_rate: 16000
+  chunk_size: 1024
+  channels: 1
+  hush_word: "__stop__"
+  silence_threshold: 0.01
+  silence_duration: 2.0
+  push_to_talk: false
+  continuous_mode: true
+
+model:
+  temperature_transcription: 0.0
+  temperature_chat: 0.2
+  top_p: 0.95
+  max_tokens: 2048
+  gpu_memory_utilization: 0.8
+  tensor_parallel_size: 1
+  enable_tool_use: true
+  tokenizer_mode: "mistral"
+  config_format: "mistral"
+  load_format: "mistral"
+
+system:
+  os_type: "linux"
+  desktop_environment: "gnome"
+  display_server: "wayland"
+  audio_backend: "pulseaudio"
+  cursor_injection: true
+  restart_services:
+    - "pulseaudio"
+    - "pipewire"
+    - "seatd"
+  logout_required: false
+
+tool_list:
+  - name: run_shell
+    description: "Run safe shell commands"
+  - name: search_web
+    description: "Search web with DuckDuckGo API"
+  - name: open_url
+    description: "Open webpage in default browser"
+  - name: type_text
+    description: "Type text at cursor position"
+
+tray_theme: "dark"
+auto_start_agent: true
+debug: false
+log_level: "INFO"
