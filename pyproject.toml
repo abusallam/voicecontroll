@@ -70,10 +70,10 @@ gpu = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/voicecontroll/voxtral-agentic-voice-platform"
-Repository = "https://github.com/voicecontroll/voxtral-agentic-voice-platform"
-Documentation = "https://github.com/voicecontroll/voxtral-agentic-voice-platform/blob/main/README.md"
-"Bug Tracker" = "https://github.com/voicecontroll/voxtral-agentic-voice-platform/issues"
+Homepage = "https://github.com/abusallam/voicecontroll"
+Repository = "https://github.com/abusallam/voicecontroll"
+Documentation = "https://github.com/abusallam/voicecontroll/blob/main/README.md"
+"Bug Tracker" = "https://github.com/abusallam/voicecontroll/issues"
 
 [project.scripts]
 voxtral = "scripts.start_voxtral:main"

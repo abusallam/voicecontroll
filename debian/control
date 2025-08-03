@@ -22,4 +22,4 @@ Description: AI-powered voice assistant for Linux
   * Privacy-first - everything runs locally, no cloud dependencies
  .
  This package includes automatic startup configuration and desktop integration.
-Homepage: https://github.com/voicecontroll/voxtral-agentic-voice-platform
+Homepage: https://github.com/abusallam/voicecontroll
