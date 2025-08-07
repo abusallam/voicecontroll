@@ -51,3 +51,53 @@ tray_theme: "dark"
 auto_start_agent: true
 debug: false
 log_level: "INFO"
+
+# Global hotkeys
+hotkeys:
+  activation_keys: ["ctrl", "alt"]
+  enabled: true
+  toggle_mode: true  # true = toggle, false = push-to-talk
+  feedback:
+    type: "visual"  # "visual", "audio", "both", "none"
+    visual: true
+    audio: false
+    notification: true
+
+# Service management
+service:
+  preferred_startup_method: "systemd"  # "systemd", "desktop", "manual"
+  check_duplicates: true
+  auto_restart: true
+  restart_delay: 5
+
+# Enhanced cursor typing
+cursor_typing:
+  detection_method: "auto"  # "auto", "window_focus", "clipboard_only"
+  fallback_to_clipboard: true
+  typing_delay: 0.05
+  window_detection_timeout: 2.0
+  preferred_apps: ["code", "gedit", "kate", "sublime"]
+
+# Enhanced Whisper configuration
+whisper:
+  model_size: "base"  # "tiny", "base", "small", "medium", "large", "large-v2", "large-v3"
+  language: null  # Auto-detect language, or specify like "en", "ar", "es"
+  task: "transcribe"  # "transcribe" or "translate"
+  temperature: 0.0  # 0.0 = deterministic, higher = more creative
+  word_timestamps: false  # Enable word-level timestamps (requires WhisperX)
+  verbose: false  # Debug output
+  
+  # Performance settings
+  fp16: true  # Use half precision (faster on GPU)
+  best_of: 1  # Number of candidates to consider
+  beam_size: 5  # Beam search width
+  
+  # Quality filters
+  compression_ratio_threshold: 2.4  # Filter repetitive text
+  logprob_threshold: -1.0  # Filter low-confidence segments
+  no_speech_threshold: 0.6  # Filter silence segments
+  
+  # Real-time settings
+  chunk_duration: 3.0  # Seconds per processing chunk
+  silence_threshold: 0.01  # RMS energy threshold for silence detection
+  min_recording_duration: 0.8  # Minimum recording length to process

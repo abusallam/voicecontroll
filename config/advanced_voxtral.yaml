@@ -1,0 +1,213 @@
+# Voxtral Advanced Agentic Voice Platform Configuration
+# Optimized for Debian 13 and production use
+
+# System Information
+system:
+  version: "2.0.0"
+  target_os: "debian_13"
+  desktop_environment: "gnome"
+  display_server: "wayland"
+  audio_backend: "pipewire"  # Debian 13 default
+  python_version: "3.11+"
+
+# Voice Processing Configuration
+voice:
+  # Whisper Model Settings
+  whisper_model: "small"  # Options: tiny, base, small, medium, large
+  fallback_model: "base"
+  use_gpu: true
+  fp16_optimization: true
+  
+  # Audio Settings
+  sample_rate: 16000
+  channels: 1
+  chunk_size: 1024
+  buffer_duration: 0.1
+  
+  # Voice Activity Detection
+  silence_threshold: 0.015
+  silence_duration: 1.2  # Faster response
+  min_recording_duration: 0.6
+  max_recording_duration: 30.0
+  
+  # Advanced Features
+  noise_reduction: true
+  auto_gain_control: false
+  voice_enhancement: true
+  multi_speaker_detection: false
+
+# Global Hotkeys
+hotkeys:
+  enabled: true
+  voice_toggle: ["ctrl", "alt"]
+  quick_record: ["ctrl", "shift", "v"]
+  emergency_stop: ["ctrl", "shift", "s"]
+  
+  # Feedback Settings
+  feedback:
+    visual: true
+    audio: false
+    notification: true
+    tray_animation: true
+
+# Agentic Workflow Configuration
+agent:
+  # Core Capabilities
+  capabilities:
+    voice_transcription: true
+    cursor_typing: true
+    web_search: true
+    shell_execution: true
+    file_operations: true
+    workflow_orchestration: true
+    
+  # Workflow Settings
+  max_workflow_steps: 10
+  workflow_timeout: 30.0
+  parallel_execution: true
+  error_recovery: true
+  
+  # Intent Recognition
+  intent_confidence_threshold: 0.7
+  context_awareness: true
+  conversation_memory: true
+  
+  # Tool Integration
+  tools:
+    enhanced_cursor_typing: true
+    shell_commands: true
+    web_search: true
+    file_manager: true
+    browser_control: true
+
+# Performance & Memory Management
+performance:
+  # Memory Settings
+  max_memory_mb: 1000
+  cleanup_threshold: 0.8
+  auto_cleanup_interval: 120  # seconds
+  audio_buffer_limit: 8
+  
+  # Processing Optimization
+  batch_processing: true
+  async_workflows: true
+  gpu_acceleration: true
+  model_caching: true
+  
+  # Monitoring
+  performance_tracking: true
+  session_logging: true
+  error_reporting: true
+
+# User Interface
+ui:
+  # Tray Settings
+  theme: "adaptive"  # adaptive, dark, light
+  icon_style: "modern"
+  animation_enabled: true
+  
+  # Menu Configuration
+  show_advanced_options: true
+  show_development_tools: true
+  show_performance_stats: true
+  
+  # Notifications
+  notification_duration: 3000  # milliseconds
+  notification_position: "top-right"
+  sound_feedback: false
+
+# Security & Privacy
+security:
+  # Data Protection
+  local_processing_only: true
+  no_cloud_services: true
+  audio_data_retention: false
+  session_data_encryption: false
+  
+  # Command Execution
+  safe_shell_commands_only: true
+  command_whitelist_enabled: true
+  sudo_commands_blocked: true
+  
+  # Network Security
+  outbound_connections_limited: true
+  ssl_verification: true
+
+# Development & Debugging
+development:
+  debug_mode: false
+  verbose_logging: false
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_rotation: true
+  max_log_size_mb: 50
+  
+  # Testing
+  enable_test_mode: false
+  mock_services: false
+  performance_profiling: false
+
+# Integration Settings
+integration:
+  # VLLM Server
+  vllm_endpoint: "http://localhost:8000/v1"
+  vllm_fallback: true
+  vllm_timeout: 10.0
+  
+  # LangGraph
+  langraph_enabled: true
+  langraph_workflows: true
+  
+  # External Tools
+  browser_integration: true
+  file_manager_integration: true
+  terminal_integration: true
+
+# Debian 13 Specific Settings
+debian13:
+  # Package Dependencies
+  required_packages:
+    - "python3-gi"
+    - "gir1.2-ayatanaappindicator3-0.1"
+    - "wtype"
+    - "wl-clipboard"
+    - "ydotool"
+    - "pipewire"
+    - "pipewire-pulse"
+    
+  # Service Integration
+  systemd_service: true
+  user_service: true
+  auto_start: true
+  
+  # Wayland Compatibility
+  wayland_protocols: "latest"
+  gtk4_support: true
+  portal_integration: true
+  
+  # Security Features
+  apparmor_profile: false
+  selinux_support: false
+  flatpak_compatible: true
+
+# Advanced Features
+advanced:
+  # AI Enhancements
+  context_learning: false
+  user_adaptation: false
+  predictive_typing: false
+  smart_corrections: true
+  
+  # Workflow Automation
+  custom_workflows: true
+  workflow_templates: true
+  macro_recording: false
+  
+  # Multi-modal Input
+  gesture_support: false
+  eye_tracking: false
+  brain_computer_interface: false
+  
+  # Future Features
+  neural_voice_synthesis: false
+  real_time_translation: false
+  emotion_recognition: false
